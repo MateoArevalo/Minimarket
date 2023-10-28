@@ -35,6 +35,7 @@
             this.Txt_buscar = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Btn_Retornar = new System.Windows.Forms.Button();
             this.Btn_Guardar = new System.Windows.Forms.Button();
             this.Btn_Cancelar = new System.Windows.Forms.Button();
             this.Txt_descripcion_ca = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.Btn_eliminar = new System.Windows.Forms.Button();
             this.Btn_reporte = new System.Windows.Forms.Button();
             this.Btn_salir = new System.Windows.Forms.Button();
-            this.Btn_Retornar = new System.Windows.Forms.Button();
             this.Tbp_Principal.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_principal)).BeginInit();
@@ -56,7 +56,7 @@
             this.Tbp_Principal.Controls.Add(this.tabPage1);
             this.Tbp_Principal.Controls.Add(this.tabPage2);
             this.Tbp_Principal.Location = new System.Drawing.Point(16, 15);
-            this.Tbp_Principal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tbp_Principal.Margin = new System.Windows.Forms.Padding(4);
             this.Tbp_Principal.Name = "Tbp_Principal";
             this.Tbp_Principal.SelectedIndex = 0;
             this.Tbp_Principal.Size = new System.Drawing.Size(1013, 308);
@@ -69,9 +69,9 @@
             this.tabPage1.Controls.Add(this.Txt_buscar);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1005, 279);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
@@ -79,28 +79,32 @@
             // 
             // Dgv_principal
             // 
+            this.Dgv_principal.AllowUserToAddRows = false;
+            this.Dgv_principal.AllowUserToDeleteRows = false;
             this.Dgv_principal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_principal.Location = new System.Drawing.Point(63, 59);
-            this.Dgv_principal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Dgv_principal.Margin = new System.Windows.Forms.Padding(4);
             this.Dgv_principal.Name = "Dgv_principal";
             this.Dgv_principal.RowHeadersWidth = 51;
             this.Dgv_principal.Size = new System.Drawing.Size(732, 167);
             this.Dgv_principal.TabIndex = 3;
+            this.Dgv_principal.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_principal_CellDoubleClick);
             // 
             // Btn_buscar
             // 
             this.Btn_buscar.Location = new System.Drawing.Point(583, 23);
-            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_buscar.Name = "Btn_buscar";
             this.Btn_buscar.Size = new System.Drawing.Size(100, 28);
             this.Btn_buscar.TabIndex = 2;
             this.Btn_buscar.Text = "Buscar";
             this.Btn_buscar.UseVisualStyleBackColor = true;
+            this.Btn_buscar.Click += new System.EventHandler(this.Btn_buscar_Click);
             // 
             // Txt_buscar
             // 
             this.Txt_buscar.Location = new System.Drawing.Point(124, 27);
-            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Txt_buscar.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_buscar.Name = "Txt_buscar";
             this.Txt_buscar.Size = new System.Drawing.Size(449, 22);
             this.Txt_buscar.TabIndex = 1;
@@ -123,18 +127,30 @@
             this.tabPage2.Controls.Add(this.Txt_descripcion_ca);
             this.tabPage2.Controls.Add(this.label1);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(1005, 279);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Btn_Retornar
+            // 
+            this.Btn_Retornar.Location = new System.Drawing.Point(449, 132);
+            this.Btn_Retornar.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_Retornar.Name = "Btn_Retornar";
+            this.Btn_Retornar.Size = new System.Drawing.Size(100, 28);
+            this.Btn_Retornar.TabIndex = 4;
+            this.Btn_Retornar.Text = "Retornar";
+            this.Btn_Retornar.UseVisualStyleBackColor = true;
+            this.Btn_Retornar.Visible = false;
+            this.Btn_Retornar.Click += new System.EventHandler(this.Btn_Retornar_Click);
+            // 
             // Btn_Guardar
             // 
             this.Btn_Guardar.Location = new System.Drawing.Point(340, 132);
-            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Guardar.Name = "Btn_Guardar";
             this.Btn_Guardar.Size = new System.Drawing.Size(100, 28);
             this.Btn_Guardar.TabIndex = 3;
@@ -146,7 +162,7 @@
             // Btn_Cancelar
             // 
             this.Btn_Cancelar.Location = new System.Drawing.Point(232, 132);
-            this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_Cancelar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_Cancelar.Name = "Btn_Cancelar";
             this.Btn_Cancelar.Size = new System.Drawing.Size(100, 28);
             this.Btn_Cancelar.TabIndex = 2;
@@ -158,7 +174,7 @@
             // Txt_descripcion_ca
             // 
             this.Txt_descripcion_ca.Location = new System.Drawing.Point(177, 84);
-            this.Txt_descripcion_ca.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Txt_descripcion_ca.Margin = new System.Windows.Forms.Padding(4);
             this.Txt_descripcion_ca.Name = "Txt_descripcion_ca";
             this.Txt_descripcion_ca.ReadOnly = true;
             this.Txt_descripcion_ca.Size = new System.Drawing.Size(381, 22);
@@ -177,7 +193,7 @@
             // Btn_nuevo
             // 
             this.Btn_nuevo.Location = new System.Drawing.Point(37, 325);
-            this.Btn_nuevo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_nuevo.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_nuevo.Name = "Btn_nuevo";
             this.Btn_nuevo.Size = new System.Drawing.Size(100, 92);
             this.Btn_nuevo.TabIndex = 4;
@@ -188,7 +204,7 @@
             // Btn_actualizar
             // 
             this.Btn_actualizar.Location = new System.Drawing.Point(145, 325);
-            this.Btn_actualizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_actualizar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_actualizar.Name = "Btn_actualizar";
             this.Btn_actualizar.Size = new System.Drawing.Size(100, 92);
             this.Btn_actualizar.TabIndex = 5;
@@ -199,17 +215,18 @@
             // Btn_eliminar
             // 
             this.Btn_eliminar.Location = new System.Drawing.Point(253, 325);
-            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_eliminar.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_eliminar.Name = "Btn_eliminar";
             this.Btn_eliminar.Size = new System.Drawing.Size(100, 92);
             this.Btn_eliminar.TabIndex = 6;
             this.Btn_eliminar.Text = "Eliminar";
             this.Btn_eliminar.UseVisualStyleBackColor = true;
+            this.Btn_eliminar.Click += new System.EventHandler(this.Btn_eliminar_Click);
             // 
             // Btn_reporte
             // 
             this.Btn_reporte.Location = new System.Drawing.Point(361, 325);
-            this.Btn_reporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_reporte.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_reporte.Name = "Btn_reporte";
             this.Btn_reporte.Size = new System.Drawing.Size(100, 92);
             this.Btn_reporte.TabIndex = 7;
@@ -219,23 +236,12 @@
             // Btn_salir
             // 
             this.Btn_salir.Location = new System.Drawing.Point(469, 325);
-            this.Btn_salir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Btn_salir.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_salir.Name = "Btn_salir";
             this.Btn_salir.Size = new System.Drawing.Size(100, 92);
             this.Btn_salir.TabIndex = 8;
             this.Btn_salir.Text = "Salir";
             this.Btn_salir.UseVisualStyleBackColor = true;
-            // 
-            // Btn_Retornar
-            // 
-            this.Btn_Retornar.Location = new System.Drawing.Point(449, 132);
-            this.Btn_Retornar.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_Retornar.Name = "Btn_Retornar";
-            this.Btn_Retornar.Size = new System.Drawing.Size(100, 28);
-            this.Btn_Retornar.TabIndex = 4;
-            this.Btn_Retornar.Text = "Retornar";
-            this.Btn_Retornar.UseVisualStyleBackColor = true;
-            this.Btn_Retornar.Visible = false;
             // 
             // Frm_Categorias
             // 
@@ -248,7 +254,7 @@
             this.Controls.Add(this.Btn_actualizar);
             this.Controls.Add(this.Btn_nuevo);
             this.Controls.Add(this.Tbp_Principal);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Frm_Categorias";
             this.Text = "Categorias";
             this.Load += new System.EventHandler(this.Frm_Categorias_Load);
