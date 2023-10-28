@@ -21,22 +21,28 @@ namespace Minimarket_Presentacion
 
         #region "Mis variables"
         int estadoGuarda = 0; //Sin ninguna accion
+        int codigoCa = 0;
         #endregion
 
         #region Mis Metodos
         private void Formato_ca()
         {
             Dgv_principal.Columns[0].Width = 100;
-            Dgv_principal.Columns[0].HeaderText = "Codigo";
-            Dgv_principal.Columns[1].Width = 300;
-            Dgv_principal.Columns[1].HeaderText = "Categoria";
+            Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
+            Dgv_principal.Columns[1].Width = 350;
+            Dgv_principal.Columns[1].HeaderText = "CATEGORÍA";
         }
 
         private void Listar_ca(string cTexto)
         {
             try
             {
-                Dgv_principal.DataSource = N_Categorias.Lista_ca(cTexto);
+                
+                DataTable datos = N_Categorias.Lista_ca(cTexto);
+                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
+                Dgv_principal.DataSource = datos;
+                Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
+                this.Formato_ca();
             }
             catch ( Exception ex )
             {
@@ -60,6 +66,19 @@ namespace Minimarket_Presentacion
             this.Btn_Retornar.Visible = !lEstado;
         }
 
+        private void SeleccionarItem()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            {
+                MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.codigoCa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
+                Txt_descripcion_ca.Text = Dgv_principal.CurrentRow.Cells["descripcion_ca"].Value.ToString();
+            }
+        }
+
         #endregion
 
         private void Frm_Categorias_Load(object sender, EventArgs e)
@@ -77,7 +96,7 @@ namespace Minimarket_Presentacion
             {
                 E_Categorias oCategoria = new E_Categorias();
                 string respuesta = string.Empty;
-                oCategoria.Codigo_ca = 0;
+                oCategoria.Codigo_ca = this.codigoCa;
                 oCategoria.Descripcion_ca = Txt_descripcion_ca.Text.Trim();
                 respuesta = N_Categorias.Guardar_ca(estadoGuarda, oCategoria);
                 if (respuesta == "OK")
@@ -89,7 +108,8 @@ namespace Minimarket_Presentacion
                     this.EstadoBotonesProcesos(false);
                     Txt_descripcion_ca.Text = string.Empty;
                     Txt_descripcion_ca.ReadOnly = true;
-                    Tbp_Principal.SelectedIndex = 0;                    
+                    Tbp_Principal.SelectedIndex = 0;
+                    this.codigoCa = 0;
                 }
                 else
                 {
@@ -112,6 +132,12 @@ namespace Minimarket_Presentacion
         private void Btn_actualizar_Click(object sender, EventArgs e)
         {
             estadoGuarda = 2; //Actualizar registro
+            this.EstadoBotonesPrincipales(false);
+            this.EstadoBotonesProcesos(true);
+            this.SeleccionarItem();
+            Txt_descripcion_ca.ReadOnly = false;
+            Tbp_Principal.SelectedIndex = 1;
+            Txt_descripcion_ca.Focus();
         }
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
@@ -120,6 +146,23 @@ namespace Minimarket_Presentacion
             Txt_descripcion_ca.Text = string.Empty;
             Txt_descripcion_ca.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
+            this.EstadoBotonesProcesos(false);
+            Tbp_Principal.SelectedIndex = 0;
+        }
+
+        private void Dgv_principal_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SeleccionarItem();
+            this.EstadoBotonesProcesos(false);
+            Tbp_Principal.SelectedIndex = 1;
+        }
+
+        private void Btn_Retornar_Click(object sender, EventArgs e)
+        {
+            //estadoGuarda = 0;
+            Txt_descripcion_ca.Text = string.Empty;
+            Txt_descripcion_ca.ReadOnly = true;
+            //this.EstadoBotonesPrincipales(true);
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
         }
