@@ -143,6 +143,7 @@ namespace Minimarket_Presentacion
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             estadoGuarda = 0; //Sin ninguna accion
+            this.codigoCa = 0;
             Txt_descripcion_ca.Text = string.Empty;
             Txt_descripcion_ca.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
@@ -162,9 +163,39 @@ namespace Minimarket_Presentacion
             //estadoGuarda = 0;
             Txt_descripcion_ca.Text = string.Empty;
             Txt_descripcion_ca.ReadOnly = true;
-            //this.EstadoBotonesPrincipales(true);
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
+            this.codigoCa = 0;
+        }
+
+        private void Btn_eliminar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            {
+                MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Estas seguro de eliminar el registro seleccionado?","Aviso del sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (opcion == DialogResult.Yes)
+                {
+                    string resp = String.Empty;
+                    this.codigoCa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
+                    resp = N_Categorias.Eliminar_ca(this.codigoCa);
+                    if(resp.Equals("OK"))
+                    {
+                        this.Listar_ca("%");
+                        this.codigoCa = 0;
+                        MessageBox.Show("Registro eliminado", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+            }
+        }
+
+        private void Btn_buscar_Click(object sender, EventArgs e)
+        {
+            this.Listar_ca(Txt_buscar.Text.Trim());
         }
     }
 }

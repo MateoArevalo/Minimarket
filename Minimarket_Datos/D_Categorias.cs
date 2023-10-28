@@ -62,5 +62,29 @@ namespace Minimarket_Datos
             }
             return resp;
         }
+
+        public string Eliminar_ca(int codigo_ca)
+        {
+            string resp = "";
+            SqlConnection con = new SqlConnection();
+            try
+            {
+                con = Conexion.getInstance().CrearConexion();
+                SqlCommand cmd = new SqlCommand("USP_Eliminar_ca", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@nCodigo_ca", SqlDbType.Int).Value = codigo_ca;
+                con.Open();
+                resp = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar los datos";
+            }
+            catch (Exception ex)
+            {
+                resp = ex.Message;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+            return resp;
+        }
     }
 }

@@ -23,5 +23,11 @@ namespace Minimarket_Negocio
             D_Categorias Datos = new D_Categorias();
             return Datos.Guardar_ca(nOpcion, oCategoria);
         }
+
+        public static string Eliminar_ca(int codigo_ca)
+        {
+            D_Categorias Datos = new D_Categorias();
+            return Datos.Eliminar_ca(codigo_ca);
+        }
     }
 }
