@@ -204,5 +204,10 @@ namespace Minimarket_Presentacion
             oRpt1.txt_p1.Text = Txt_buscar.Text;
             oRpt1.ShowDialog();
         }
+
+        private void Btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
