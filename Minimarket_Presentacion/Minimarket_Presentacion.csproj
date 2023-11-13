@@ -89,6 +89,12 @@
     <Compile Include="Reportes\Frm_Rpt_Categorias.Designer.cs">
       <DependentUpon>Frm_Rpt_Categorias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Frm_Rpt_Marcas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Frm_Rpt_Marcas.Designer.cs">
+      <DependentUpon>Frm_Rpt_Marcas.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="Frm_Marcas.resx">
       <DependentUpon>Frm_Marcas.cs</DependentUpon>
@@ -108,7 +114,11 @@
     <EmbeddedResource Include="Reportes\Frm_Rpt_Categorias.resx">
       <DependentUpon>Frm_Rpt_Categorias.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Frm_Rpt_Marcas.resx">
+      <DependentUpon>Frm_Rpt_Marcas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Rpt_Categorias.rdlc" />
+    <EmbeddedResource Include="Reportes\Rpt_Marcas.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
