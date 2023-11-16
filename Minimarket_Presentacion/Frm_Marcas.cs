@@ -12,16 +12,16 @@ using Minimarket_Negocio;
 
 namespace Minimarket_Presentacion
 {
-    public partial class Frm_Categorias : Form
+    public partial class Frm_Marcas : Form
     {
-        public Frm_Categorias()
+        public Frm_Marcas()
         {
             InitializeComponent();
         }
 
         #region "Mis variables"
         int estadoGuarda = 0; //Sin ninguna accion
-        int codigoCa = 0;
+        int codigoMa = 0;
         #endregion
 
         #region Mis Metodos
@@ -30,15 +30,15 @@ namespace Minimarket_Presentacion
             Dgv_principal.Columns[0].Width = 100;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
             Dgv_principal.Columns[1].Width = 350;
-            Dgv_principal.Columns[1].HeaderText = "CATEGORÍA";
+            Dgv_principal.Columns[1].HeaderText = "MARCA";
         }
 
-        private void Listar_ca(string cTexto)
+        private void Listar_ma(string cTexto)
         {
             try
             {
                 
-                DataTable datos = N_Categorias.Lista_ca(cTexto);
+                DataTable datos = N_Marcas.Lista_ma(cTexto);
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
@@ -74,42 +74,42 @@ namespace Minimarket_Presentacion
             }
             else
             {
-                this.codigoCa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
-                Txt_descripcion_ca.Text = Dgv_principal.CurrentRow.Cells["descripcion_ca"].Value.ToString();
+                this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
+                Txt_descripcion_ma.Text = Dgv_principal.CurrentRow.Cells["descripcion_ca"].Value.ToString();
             }
         }
 
         #endregion
 
-        private void Frm_Categorias_Load(object sender, EventArgs e)
+        private void Frm_Marcas_Load(object sender, EventArgs e)
         {
-            this.Listar_ca("%");
+            this.Listar_ma("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            if (Txt_descripcion_ca.Text == string.Empty)
+            if (Txt_descripcion_ma.Text == string.Empty)
             {
                 MessageBox.Show("Falta ingresar datos requeridos (*)", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else //Procede a registrar la informacion
             {
-                E_Categorias oCategoria = new E_Categorias();
+                E_Marcas oMarcas = new E_Marcas();
                 string respuesta = string.Empty;
-                oCategoria.Codigo_ca = this.codigoCa;
-                oCategoria.Descripcion_ca = Txt_descripcion_ca.Text.Trim();
-                respuesta = N_Categorias.Guardar_ca(estadoGuarda, oCategoria);
+                oMarcas.Codigo_ma = this.codigoMa;
+                oMarcas.Descripcion_ma = Txt_descripcion_ma.Text.Trim();
+                respuesta = N_Marcas.Guardar_ma(estadoGuarda, oMarcas);
                 if (respuesta == "OK")
                 {
-                    this.Listar_ca("%");
+                    this.Listar_ma("%");
                     MessageBox.Show("Datos guardados correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     estadoGuarda = 0; //Finaliza su accion
                     this.EstadoBotonesPrincipales(true);
                     this.EstadoBotonesProcesos(false);
-                    Txt_descripcion_ca.Text = string.Empty;
-                    Txt_descripcion_ca.ReadOnly = true;
+                    Txt_descripcion_ma.Text = string.Empty;
+                    Txt_descripcion_ma.ReadOnly = true;
                     Tbp_Principal.SelectedIndex = 0;
-                    this.codigoCa = 0;
+                    this.codigoMa = 0;
                 }
                 else
                 {
@@ -123,10 +123,10 @@ namespace Minimarket_Presentacion
             estadoGuarda = 1; //Nuevo registro
             this.EstadoBotonesPrincipales(false);
             this.EstadoBotonesProcesos(true);
-            Txt_descripcion_ca.Text = string.Empty;
-            Txt_descripcion_ca.ReadOnly = false;
+            Txt_descripcion_ma.Text = string.Empty;
+            Txt_descripcion_ma.ReadOnly = false;
             Tbp_Principal.SelectedIndex = 1;
-            Txt_descripcion_ca.Focus();
+            Txt_descripcion_ma.Focus();
         }
 
         private void Btn_actualizar_Click(object sender, EventArgs e)
@@ -135,17 +135,17 @@ namespace Minimarket_Presentacion
             this.EstadoBotonesPrincipales(false);
             this.EstadoBotonesProcesos(true);
             this.SeleccionarItem();
-            Txt_descripcion_ca.ReadOnly = false;
+            Txt_descripcion_ma.ReadOnly = false;
             Tbp_Principal.SelectedIndex = 1;
-            Txt_descripcion_ca.Focus();
+            Txt_descripcion_ma.Focus();
         }
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             estadoGuarda = 0; //Sin ninguna accion
-            this.codigoCa = 0;
-            Txt_descripcion_ca.Text = string.Empty;
-            Txt_descripcion_ca.ReadOnly = true;
+            this.codigoMa = 0;
+            Txt_descripcion_ma.Text = string.Empty;
+            Txt_descripcion_ma.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
@@ -161,11 +161,11 @@ namespace Minimarket_Presentacion
         private void Btn_Retornar_Click(object sender, EventArgs e)
         {
             //estadoGuarda = 0;
-            Txt_descripcion_ca.Text = string.Empty;
-            Txt_descripcion_ca.ReadOnly = true;
+            Txt_descripcion_ma.Text = string.Empty;
+            Txt_descripcion_ma.ReadOnly = true;
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
-            this.codigoCa = 0;
+            this.codigoMa = 0;
         }
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
@@ -181,12 +181,12 @@ namespace Minimarket_Presentacion
                 if (opcion == DialogResult.Yes)
                 {
                     string resp = String.Empty;
-                    this.codigoCa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
-                    resp = N_Categorias.Eliminar_ca(this.codigoCa);
+                    this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
+                    resp = N_Marcas.Eliminar_ma(this.codigoMa);
                     if(resp.Equals("OK"))
                     {
-                        this.Listar_ca("%");
-                        this.codigoCa = 0;
+                        this.Listar_ma("%");
+                        this.codigoMa = 0;
                         MessageBox.Show("Registro eliminado", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -195,14 +195,14 @@ namespace Minimarket_Presentacion
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
-            this.Listar_ca(Txt_buscar.Text.Trim());
+            this.Listar_ma(Txt_buscar.Text.Trim());
         }
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            Reportes.Frm_Rpt_Categorias oRpt1 = new Reportes.Frm_Rpt_Categorias();
-            oRpt1.txt_p1.Text = Txt_buscar.Text;
-            oRpt1.ShowDialog();
+            Reportes.Frm_Rpt_Marcas oRpt2 = new Reportes.Frm_Rpt_Marcas();
+            oRpt2.txt_p1.Text = Txt_buscar.Text;
+            oRpt2.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)

@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Minimarket_Entidades;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Minimarket_Entidades;
 
 namespace Minimarket_Datos
 {
-    public class D_Categorias
+    public class D_Unidades_Medidas
     {
-        public DataTable Lista_ca(string cTexto)
+        public DataTable Lista_um(string cTexto)
         {
             SqlDataReader resultado;
             DataTable tabla = new DataTable();
@@ -19,7 +19,7 @@ namespace Minimarket_Datos
             try
             {
                 con = Conexion.getInstance().CrearConexion();
-                SqlCommand cmd = new SqlCommand("USP_Listado_ca", con);
+                SqlCommand cmd = new SqlCommand("USP_Listado_um", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@cTexto", SqlDbType.VarChar).Value = cTexto;
                 con.Open();
@@ -37,18 +37,19 @@ namespace Minimarket_Datos
             }
         }
 
-        public string Guardar_ca(int nOpcion, E_Categorias oCategoria)
+        public string Guardar_um(int nOpcion, E_Unidades_Medidas oUnidadesMedidas)
         {
             string resp = "";
             SqlConnection con = new SqlConnection();
             try
             {
                 con = Conexion.getInstance().CrearConexion();
-                SqlCommand cmd = new SqlCommand("USP_Guardar_ca", con);
+                SqlCommand cmd = new SqlCommand("USP_Guardar_um", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@nOpcion",SqlDbType.Int).Value = nOpcion;
-                cmd.Parameters.Add("@nCodigo_ca", SqlDbType.Int).Value = oCategoria.Codigo_ca;
-                cmd.Parameters.Add("@cDescripcion_ca", SqlDbType.VarChar).Value = oCategoria.Descripcion_ca;
+                cmd.Parameters.Add("@nOpcion", SqlDbType.Int).Value = nOpcion;
+                cmd.Parameters.Add("@nCodigo_um", SqlDbType.Int).Value = oUnidadesMedidas.Codigo_um;
+                cmd.Parameters.Add("@cAbreviatura_um", SqlDbType.VarChar).Value = oUnidadesMedidas.Abreviatura_um;
+                cmd.Parameters.Add("@cDescripcion_um", SqlDbType.VarChar).Value = oUnidadesMedidas.Descripcion_um;
                 con.Open();
                 resp = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo registrar los datos";
             }
@@ -63,16 +64,16 @@ namespace Minimarket_Datos
             return resp;
         }
 
-        public string Eliminar_ca(int codigo_ca)
+        public string Eliminar_um(int codigo_um)
         {
             string resp = "";
             SqlConnection con = new SqlConnection();
             try
             {
                 con = Conexion.getInstance().CrearConexion();
-                SqlCommand cmd = new SqlCommand("USP_Eliminar_ca", con);
+                SqlCommand cmd = new SqlCommand("USP_Eliminar_um", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@nCodigo_ca", SqlDbType.Int).Value = codigo_ca;
+                cmd.Parameters.Add("@nCodigo_um", SqlDbType.Int).Value = codigo_um;
                 con.Open();
                 resp = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo eliminar los datos";
             }
