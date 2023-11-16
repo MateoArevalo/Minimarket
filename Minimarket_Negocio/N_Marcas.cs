@@ -23,10 +23,10 @@ namespace Minimarket_Negocio
             return Datos.Guardar_ma(nOpcion, oMarcas);
         }
 
-        public static string Eliminar_ma(int codigo_ca)
+        public static string Eliminar_ma(int codigo_ma)
         {
             D_Marcas Datos = new D_Marcas();
-            return Datos.Eliminar_ma(codigo_ca);
+            return Datos.Eliminar_ma(codigo_ma);
         }
     }
 }
