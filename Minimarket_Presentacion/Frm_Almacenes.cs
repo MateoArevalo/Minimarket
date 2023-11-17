@@ -21,28 +21,28 @@ namespace Minimarket_Presentacion
 
         #region "Mis variables"
         int estadoGuarda = 0; //Sin ninguna accion
-        int codigoMa = 0;
+        int codigoAl = 0;
         #endregion
 
         #region Mis Metodos
-        private void Formato_ca()
+        private void Formato_al()
         {
             Dgv_principal.Columns[0].Width = 100;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
             Dgv_principal.Columns[1].Width = 350;
-            Dgv_principal.Columns[1].HeaderText = "MARCA";
+            Dgv_principal.Columns[1].HeaderText = "ALMACÉN";
         }
 
-        private void Listar_ma(string cTexto)
+        private void Listar_al(string cTexto)
         {
             try
             {
                 
-                DataTable datos = N_Marcas.Lista_ma(cTexto);
+                DataTable datos = N_Almacenes.Lista_al(cTexto);
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
-                this.Formato_ca();
+                this.Formato_al();
             }
             catch ( Exception ex )
             {
@@ -68,14 +68,14 @@ namespace Minimarket_Presentacion
 
         private void SeleccionarItem()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_al"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
-                Txt_descripcion_al.Text = Dgv_principal.CurrentRow.Cells["descripcion_ca"].Value.ToString();
+                this.codigoAl = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
+                Txt_descripcion_al.Text = Dgv_principal.CurrentRow.Cells["descripcion_al"].Value.ToString();
             }
         }
 
@@ -83,7 +83,7 @@ namespace Minimarket_Presentacion
 
         private void Frm_Almacenes_Load(object sender, EventArgs e)
         {
-            this.Listar_ma("%");
+            this.Listar_al("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
@@ -94,14 +94,14 @@ namespace Minimarket_Presentacion
             }
             else //Procede a registrar la informacion
             {
-                E_Marcas oMarcas = new E_Marcas();
+                E_Almacenes oAlmacenes = new E_Almacenes();
                 string respuesta = string.Empty;
-                oMarcas.Codigo_ma = this.codigoMa;
-                oMarcas.Descripcion_ma = Txt_descripcion_al.Text.Trim();
-                respuesta = N_Marcas.Guardar_ma(estadoGuarda, oMarcas);
+                oAlmacenes.Codigo_al = this.codigoAl;
+                oAlmacenes.Descripcion_al = Txt_descripcion_al.Text.Trim();
+                respuesta = N_Almacenes.Guardar_al(estadoGuarda, oAlmacenes);
                 if (respuesta == "OK")
                 {
-                    this.Listar_ma("%");
+                    this.Listar_al("%");
                     MessageBox.Show("Datos guardados correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     estadoGuarda = 0; //Finaliza su accion
                     this.EstadoBotonesPrincipales(true);
@@ -109,7 +109,7 @@ namespace Minimarket_Presentacion
                     Txt_descripcion_al.Text = string.Empty;
                     Txt_descripcion_al.ReadOnly = true;
                     Tbp_Principal.SelectedIndex = 0;
-                    this.codigoMa = 0;
+                    this.codigoAl = 0;
                 }
                 else
                 {
@@ -143,7 +143,7 @@ namespace Minimarket_Presentacion
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             estadoGuarda = 0; //Sin ninguna accion
-            this.codigoMa = 0;
+            this.codigoAl = 0;
             Txt_descripcion_al.Text = string.Empty;
             Txt_descripcion_al.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
@@ -165,7 +165,7 @@ namespace Minimarket_Presentacion
             Txt_descripcion_al.ReadOnly = true;
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
-            this.codigoMa = 0;
+            this.codigoAl = 0;
         }
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
@@ -181,12 +181,12 @@ namespace Minimarket_Presentacion
                 if (opcion == DialogResult.Yes)
                 {
                     string resp = String.Empty;
-                    this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
-                    resp = N_Marcas.Eliminar_ma(this.codigoMa);
+                    this.codigoAl = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
+                    resp = N_Almacenes.Eliminar_al(this.codigoAl);
                     if(resp.Equals("OK"))
                     {
-                        this.Listar_ma("%");
-                        this.codigoMa = 0;
+                        this.Listar_al("%");
+                        this.codigoAl = 0;
                         MessageBox.Show("Registro eliminado", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -195,14 +195,14 @@ namespace Minimarket_Presentacion
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
-            this.Listar_ma(Txt_buscar.Text.Trim());
+            this.Listar_al(Txt_buscar.Text.Trim());
         }
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            Reportes.Frm_Rpt_Marcas oRpt2 = new Reportes.Frm_Rpt_Marcas();
-            oRpt2.txt_p1.Text = Txt_buscar.Text;
-            oRpt2.ShowDialog();
+            //Reportes.Frm_Rpt_Marcas oRpt2 = new Reportes.Frm_Rpt_Marcas();
+            //oRpt2.txt_p1.Text = Txt_buscar.Text;
+            //oRpt2.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
