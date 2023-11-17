@@ -6,13 +6,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.68189cm</Width>
+              <Width>3.88277cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.40156cm</Width>
-            </TablixColumn>
-            <TablixColumn>
-              <Width>4.12122cm</Width>
+              <Width>6.3219cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -61,7 +58,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>ABREVIATURA</Value>
+                              <Value>ALMACÉN</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -85,39 +82,6 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="Textbox7">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>MEDIDA</Value>
-                              <Style>
-                                <FontWeight>Bold</FontWeight>
-                              </Style>
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>Textbox7</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <BackgroundColor>LightBlue</BackgroundColor>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
@@ -125,21 +89,21 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="codigo_um">
+                    <Textbox Name="codigo_al">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!codigo_um.Value</Value>
+                              <Value>=Fields!codigo_al.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>codigo_um</rd:DefaultName>
+                      <rd:DefaultName>codigo_al</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -155,51 +119,21 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="abreviatura_um">
+                    <Textbox Name="descripcion_al">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!abreviatura_um.Value</Value>
+                              <Value>=Fields!descripcion_al.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
                           <Style />
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>abreviatura_um</rd:DefaultName>
-                      <Style>
-                        <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
-                        </Border>
-                        <PaddingLeft>2pt</PaddingLeft>
-                        <PaddingRight>2pt</PaddingRight>
-                        <PaddingTop>2pt</PaddingTop>
-                        <PaddingBottom>2pt</PaddingBottom>
-                      </Style>
-                    </Textbox>
-                  </CellContents>
-                </TablixCell>
-                <TablixCell>
-                  <CellContents>
-                    <Textbox Name="descripcion_um">
-                      <CanGrow>true</CanGrow>
-                      <KeepTogether>true</KeepTogether>
-                      <Paragraphs>
-                        <Paragraph>
-                          <TextRuns>
-                            <TextRun>
-                              <Value>=Fields!descripcion_um.Value</Value>
-                              <Style />
-                            </TextRun>
-                          </TextRuns>
-                          <Style />
-                        </Paragraph>
-                      </Paragraphs>
-                      <rd:DefaultName>descripcion_um</rd:DefaultName>
+                      <rd:DefaultName>descripcion_al</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -221,7 +155,6 @@
           <TablixMembers>
             <TablixMember />
             <TablixMember />
-            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -235,7 +168,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>1.8542cm</Top>
+        <Top>2.82787cm</Top>
         <Left>3.15267cm</Left>
         <Height>1.2cm</Height>
         <Width>10.20467cm</Width>
@@ -246,13 +179,13 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.69167in</Height>
+    <Height>3.01667in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
   <Page>
     <PageHeader>
-      <Height>2.58233cm</Height>
+      <Height>2.54cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -263,7 +196,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE DE UNIDADES DE MEDIDA</Value>
+                  <Value>REPORTE DE ALMACENES</Value>
                   <Style>
                     <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -276,7 +209,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.04917cm</Top>
+          <Top>0.97509cm</Top>
           <Left>4.29567cm</Left>
           <Height>0.6cm</Height>
           <Width>10.20467cm</Width>
@@ -294,7 +227,7 @@
           <Source>Embedded</Source>
           <Value>logoMinimarket</Value>
           <Sizing>FitProportional</Sizing>
-          <Top>0.7105cm</Top>
+          <Top>0.63642cm</Top>
           <Left>2.00966cm</Left>
           <Height>1.3095cm</Height>
           <Width>1.3095cm</Width>
@@ -371,7 +304,7 @@
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>c3e3131f-34ad-43e5-b328-597911a8eb1d</rd:DataSourceID>
+      <rd:DataSourceID>99cf848e-5b3b-4efd-8299-fa94a3301b01</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -381,26 +314,22 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="codigo_um">
-          <DataField>codigo_um</DataField>
+        <Field Name="codigo_al">
+          <DataField>codigo_al</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="abreviatura_um">
-          <DataField>abreviatura_um</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="descripcion_um">
-          <DataField>descripcion_um</DataField>
+        <Field Name="descripcion_al">
+          <DataField>descripcion_al</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataSet_Minimarket</rd:DataSetName>
         <rd:SchemaPath>C:\Users\mateo\OneDrive\Escritorio\My Proyects\C#\Sistema_Minimarket\Minimarket\Minimarket_Presentacion\Reportes\DataSet_Minimarket.xsd</rd:SchemaPath>
-        <rd:TableName>USP_Listado_um</rd:TableName>
+        <rd:TableName>USP_Listado_al</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>USP_Listado_umTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>USP_Listado_alTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -440,5 +369,5 @@ XX/nU3wQDyUDFgCUfJYv9xXlllwG0esUegMUM0xHIk/aCchzqliR3iKrq5aVhEwHIoolFgCU9IpWV0x3
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>290b37d0-5acd-4f30-8c3f-cc302b6ef53d</rd:ReportID>
+  <rd:ReportID>015cdf2b-d956-42e9-bb55-03e71afb473a</rd:ReportID>
 </Report>

@@ -200,9 +200,9 @@ namespace Minimarket_Presentacion
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            //Reportes.Frm_Rpt_Marcas oRpt2 = new Reportes.Frm_Rpt_Marcas();
-            //oRpt2.txt_p1.Text = Txt_buscar.Text;
-            //oRpt2.ShowDialog();
+            Reportes.Frm_Rpt_Almacenes oRpt4 = new Reportes.Frm_Rpt_Almacenes();
+            oRpt4.txt_p1.Text = Txt_buscar.Text;
+            oRpt4.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
