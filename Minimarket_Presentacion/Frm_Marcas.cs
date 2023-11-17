@@ -25,7 +25,7 @@ namespace Minimarket_Presentacion
         #endregion
 
         #region Mis Metodos
-        private void Formato_ca()
+        private void Formato_ma()
         {
             Dgv_principal.Columns[0].Width = 100;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
@@ -42,7 +42,7 @@ namespace Minimarket_Presentacion
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
-                this.Formato_ca();
+                this.Formato_ma();
             }
             catch ( Exception ex )
             {
@@ -68,14 +68,14 @@ namespace Minimarket_Presentacion
 
         private void SeleccionarItem()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ma"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
-                Txt_descripcion_ma.Text = Dgv_principal.CurrentRow.Cells["descripcion_ca"].Value.ToString();
+                this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ma"].Value);
+                Txt_descripcion_ma.Text = Dgv_principal.CurrentRow.Cells["descripcion_ma"].Value.ToString();
             }
         }
 
@@ -170,7 +170,7 @@ namespace Minimarket_Presentacion
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ma"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -181,7 +181,7 @@ namespace Minimarket_Presentacion
                 if (opcion == DialogResult.Yes)
                 {
                     string resp = String.Empty;
-                    this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value);
+                    this.codigoMa = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_ma"].Value);
                     resp = N_Marcas.Eliminar_ma(this.codigoMa);
                     if(resp.Equals("OK"))
                     {

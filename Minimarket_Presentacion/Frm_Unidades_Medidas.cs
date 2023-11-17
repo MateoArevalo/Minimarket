@@ -25,7 +25,7 @@ namespace Minimarket_Presentacion
         #endregion
 
         #region Mis Metodos
-        private void Formato_ca()
+        private void Formato_um()
         {
             Dgv_principal.Columns[0].Width = 100;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
@@ -44,7 +44,7 @@ namespace Minimarket_Presentacion
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
-                this.Formato_ca();
+                this.Formato_um();
             }
             catch ( Exception ex )
             {
