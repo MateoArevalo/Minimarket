@@ -22,15 +22,31 @@ namespace Minimarket_Presentacion
         #region "Mis variables"
         int estadoGuarda = 0; //Sin ninguna accion
         int codigoPr = 0;
+        int codigoMa = 0;
+        int codigoUm = 0;
+        int codigoCa = 0;
         #endregion
 
         #region Mis Metodos
         private void Formato_al()
         {
-            Dgv_principal.Columns[0].Width = 100;
+            Dgv_principal.Columns[0].Width = 70;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
-            Dgv_principal.Columns[1].Width = 350;
+            Dgv_principal.Columns[1].Width = 250;
             Dgv_principal.Columns[1].HeaderText = "PRODUCTO";
+            Dgv_principal.Columns[2].Width = 150;
+            Dgv_principal.Columns[2].HeaderText = "MARCA";
+            Dgv_principal.Columns[3].Width = 100;
+            Dgv_principal.Columns[3].HeaderText = "U.MEDIDA";
+            Dgv_principal.Columns[4].Width = 150;
+            Dgv_principal.Columns[4].HeaderText = "CATEGORÍA";
+            Dgv_principal.Columns[5].Width = 70;
+            Dgv_principal.Columns[5].HeaderText = "STOCK MIN";
+            Dgv_principal.Columns[6].Width = 70;
+            Dgv_principal.Columns[6].HeaderText = "STOCK MAX";
+            Dgv_principal.Columns[7].Visible = false;
+            Dgv_principal.Columns[8].Visible = false;
+            Dgv_principal.Columns[9].Visible = false;
         }
 
         private void Listar_pr(string cTexto)
@@ -38,7 +54,7 @@ namespace Minimarket_Presentacion
             try
             {
                 
-                DataTable datos = N_Almacenes.Lista_al(cTexto);
+                DataTable datos = N_Productos.Lista_pr(cTexto);
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
@@ -68,14 +84,15 @@ namespace Minimarket_Presentacion
 
         private void SeleccionarItem()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_al"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_pr"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.codigoPr = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
-                Txt_descripcion_pr.Text = Dgv_principal.CurrentRow.Cells["descripcion_al"].Value.ToString();
+                this.codigoPr = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_pr"].Value);
+                Txt_descripcion_pr.Text = Dgv_principal.CurrentRow.Cells["descripcion_pr"].Value.ToString();
+
             }
         }
 
@@ -94,11 +111,11 @@ namespace Minimarket_Presentacion
             }
             else //Procede a registrar la informacion
             {
-                E_Almacenes oAlmacenes = new E_Almacenes();
+                E_Productos oProductos = new E_Productos();
                 string respuesta = string.Empty;
-                oAlmacenes.Codigo_al = this.codigoPr;
-                oAlmacenes.Descripcion_al = Txt_descripcion_pr.Text.Trim();
-                respuesta = N_Almacenes.Guardar_al(estadoGuarda, oAlmacenes);
+                oProductos.Codigo_pr = this.codigoPr;
+                oProductos.Descripcion_pr = Txt_descripcion_pr.Text.Trim();
+                respuesta = N_Productos.Guardar_pr(estadoGuarda, oProductos);
                 if (respuesta == "OK")
                 {
                     this.Listar_pr("%");
@@ -170,7 +187,7 @@ namespace Minimarket_Presentacion
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_pr"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -182,7 +199,7 @@ namespace Minimarket_Presentacion
                 {
                     string resp = String.Empty;
                     this.codigoPr = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
-                    resp = N_Almacenes.Eliminar_al(this.codigoPr);
+                    resp = N_Productos.Eliminar_pr(this.codigoPr);
                     if(resp.Equals("OK"))
                     {
                         this.Listar_pr("%");
@@ -200,9 +217,9 @@ namespace Minimarket_Presentacion
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            Reportes.Frm_Rpt_Almacenes oRpt4 = new Reportes.Frm_Rpt_Almacenes();
-            oRpt4.txt_p1.Text = Txt_buscar.Text;
-            oRpt4.ShowDialog();
+            //Reportes.Frm_Rpt_Productos oRpt5 = new Reportes.Frm_Rpt_Productos();
+            //oRpt5.txt_p1.Text = Txt_buscar.Text;
+            //oRpt5.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)

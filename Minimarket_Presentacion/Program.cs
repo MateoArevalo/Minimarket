@@ -16,7 +16,7 @@ namespace Minimarket_Presentacion
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Frm_Unidades_Medidas());
+            Application.Run(new Frm_Productos());
         }
     }
 }
