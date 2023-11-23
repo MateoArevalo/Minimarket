@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Tbp_Principal = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.Btn_buscar = new System.Windows.Forms.Button();
@@ -38,6 +41,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Dgv_principal = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Pnl_Listado_ma = new System.Windows.Forms.Panel();
+            this.Btn_retornar1 = new System.Windows.Forms.Button();
+            this.Btn_buscar1 = new System.Windows.Forms.Button();
+            this.Txt_buscar1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Dgv_marcas = new System.Windows.Forms.DataGridView();
             this.Txt_stockMax_pr = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.Txt_stockMin_pr = new System.Windows.Forms.TextBox();
@@ -65,6 +75,8 @@
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_principal)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.Pnl_Listado_ma.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_marcas)).BeginInit();
             this.SuspendLayout();
             // 
             // Tbp_Principal
@@ -116,7 +128,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(22, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.Size = new System.Drawing.Size(48, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Buscar:";
             // 
@@ -124,27 +136,28 @@
             // 
             this.Dgv_principal.AllowUserToAddRows = false;
             this.Dgv_principal.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            this.Dgv_principal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle40.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            this.Dgv_principal.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle40;
             this.Dgv_principal.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
             this.Dgv_principal.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dgv_principal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_principal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle41;
             this.Dgv_principal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Dgv_principal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_principal.DefaultCellStyle = dataGridViewCellStyle42;
+            this.Dgv_principal.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.Dgv_principal.EnableHeadersVisualStyles = false;
             this.Dgv_principal.Location = new System.Drawing.Point(22, 48);
             this.Dgv_principal.Name = "Dgv_principal";
@@ -156,6 +169,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.Pnl_Listado_ma);
             this.tabPage2.Controls.Add(this.Txt_stockMax_pr);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.Txt_stockMin_pr);
@@ -177,10 +191,109 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(934, 336);
+            this.tabPage2.Size = new System.Drawing.Size(951, 336);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // Pnl_Listado_ma
+            // 
+            this.Pnl_Listado_ma.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            this.Pnl_Listado_ma.Controls.Add(this.Btn_retornar1);
+            this.Pnl_Listado_ma.Controls.Add(this.Btn_buscar1);
+            this.Pnl_Listado_ma.Controls.Add(this.Txt_buscar1);
+            this.Pnl_Listado_ma.Controls.Add(this.label9);
+            this.Pnl_Listado_ma.Controls.Add(this.label8);
+            this.Pnl_Listado_ma.Controls.Add(this.Dgv_marcas);
+            this.Pnl_Listado_ma.Location = new System.Drawing.Point(516, 47);
+            this.Pnl_Listado_ma.Name = "Pnl_Listado_ma";
+            this.Pnl_Listado_ma.Size = new System.Drawing.Size(349, 239);
+            this.Pnl_Listado_ma.TabIndex = 18;
+            this.Pnl_Listado_ma.Visible = false;
+            // 
+            // Btn_retornar1
+            // 
+            this.Btn_retornar1.BackColor = System.Drawing.Color.Gainsboro;
+            this.Btn_retornar1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_retornar1.Location = new System.Drawing.Point(280, 55);
+            this.Btn_retornar1.Name = "Btn_retornar1";
+            this.Btn_retornar1.Size = new System.Drawing.Size(33, 21);
+            this.Btn_retornar1.TabIndex = 16;
+            this.Btn_retornar1.Text = "<-|";
+            this.Btn_retornar1.UseVisualStyleBackColor = false;
+            // 
+            // Btn_buscar1
+            // 
+            this.Btn_buscar1.BackColor = System.Drawing.Color.Gainsboro;
+            this.Btn_buscar1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.Btn_buscar1.Location = new System.Drawing.Point(241, 55);
+            this.Btn_buscar1.Name = "Btn_buscar1";
+            this.Btn_buscar1.Size = new System.Drawing.Size(33, 21);
+            this.Btn_buscar1.TabIndex = 15;
+            this.Btn_buscar1.Text = ":::";
+            this.Btn_buscar1.UseVisualStyleBackColor = false;
+            // 
+            // Txt_buscar1
+            // 
+            this.Txt_buscar1.Location = new System.Drawing.Point(96, 55);
+            this.Txt_buscar1.Name = "Txt_buscar1";
+            this.Txt_buscar1.Size = new System.Drawing.Size(139, 20);
+            this.Txt_buscar1.TabIndex = 14;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(30, 56);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 15);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Buscar:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(29, 14);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(165, 20);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Listado de Marcas";
+            // 
+            // Dgv_marcas
+            // 
+            this.Dgv_marcas.AllowUserToAddRows = false;
+            this.Dgv_marcas.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle37.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            this.Dgv_marcas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle37;
+            this.Dgv_marcas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
+            this.Dgv_marcas.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleVertical;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(223)))), ((int)(((byte)(216)))));
+            dataGridViewCellStyle38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle38.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Dgv_marcas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            this.Dgv_marcas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle39.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle39.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle39.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Dgv_marcas.DefaultCellStyle = dataGridViewCellStyle39;
+            this.Dgv_marcas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.Dgv_marcas.EnableHeadersVisualStyles = false;
+            this.Dgv_marcas.Location = new System.Drawing.Point(32, 82);
+            this.Dgv_marcas.Name = "Dgv_marcas";
+            this.Dgv_marcas.RowHeadersWidth = 51;
+            this.Dgv_marcas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Dgv_marcas.Size = new System.Drawing.Size(281, 145);
+            this.Dgv_marcas.TabIndex = 10;
+            this.Dgv_marcas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dgv_marcas_CellDoubleClick);
             // 
             // Txt_stockMax_pr
             // 
@@ -195,7 +308,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(285, 206);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 13);
+            this.label7.Size = new System.Drawing.Size(104, 15);
             this.label7.TabIndex = 16;
             this.label7.Text = "Stock Máximo: (*)";
             // 
@@ -212,7 +325,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(145, 206);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 13);
+            this.label6.Size = new System.Drawing.Size(101, 15);
             this.label6.TabIndex = 14;
             this.label6.Text = "Stock Mínimo: (*)";
             // 
@@ -240,7 +353,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(63, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.Size = new System.Drawing.Size(79, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Categoria: (*)";
             // 
@@ -268,7 +381,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(63, 123);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.Size = new System.Drawing.Size(68, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Medida: (*)";
             // 
@@ -282,6 +395,7 @@
             this.Btn_lupa1.TabIndex = 7;
             this.Btn_lupa1.Text = ":::";
             this.Btn_lupa1.UseVisualStyleBackColor = false;
+            this.Btn_lupa1.Click += new System.EventHandler(this.Btn_lupa1_Click);
             // 
             // Txt_marca_pr
             // 
@@ -296,7 +410,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(63, 87);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(61, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Marca: (*)";
             // 
@@ -352,7 +466,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(63, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.Size = new System.Drawing.Size(75, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Producto: (*)";
             // 
@@ -421,7 +535,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            this.ClientSize = new System.Drawing.Size(983, 473);
+            this.ClientSize = new System.Drawing.Size(985, 476);
             this.Controls.Add(this.Btn_salir);
             this.Controls.Add(this.Btn_reporte);
             this.Controls.Add(this.Btn_eliminar);
@@ -437,6 +551,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_principal)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.Pnl_Listado_ma.ResumeLayout(false);
+            this.Pnl_Listado_ma.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_marcas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,5 +590,12 @@
         private System.Windows.Forms.Button Btn_lupa2;
         private System.Windows.Forms.TextBox Txt_medida_pr;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel Pnl_Listado_ma;
+        private System.Windows.Forms.DataGridView Dgv_marcas;
+        private System.Windows.Forms.Button Btn_retornar1;
+        private System.Windows.Forms.Button Btn_buscar1;
+        private System.Windows.Forms.TextBox Txt_buscar1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -28,7 +28,7 @@ namespace Minimarket_Presentacion
         #endregion
 
         #region Mis Metodos
-        private void Formato_al()
+        private void Formato_pr()
         {
             Dgv_principal.Columns[0].Width = 70;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
@@ -58,7 +58,7 @@ namespace Minimarket_Presentacion
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
-                this.Formato_al();
+                this.Formato_pr();
             }
             catch ( Exception ex )
             {
@@ -96,11 +96,50 @@ namespace Minimarket_Presentacion
             }
         }
 
+        private void Formato_ma_pr()
+        {
+            Dgv_marcas.Columns[0].Width = 230;
+            Dgv_marcas.Columns[0].HeaderText = "MARCA";
+            Dgv_marcas.Columns[1].Visible = false;
+        }
+
+        private void Listar_ma_pr(string cTexto)
+        {
+            try
+            {
+
+                DataTable datos = N_Productos.Lista_ma_pr(cTexto);
+                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
+                Dgv_marcas.DataSource = datos;
+                Console.WriteLine("Filas después del formato: " + Dgv_marcas.Rows.Count);
+                this.Formato_ma_pr();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void SeleccionarItem_ma_pr()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_marcas.CurrentRow.Cells["codigo_ma"].Value)))
+            {
+                MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.codigoMa = Convert.ToInt32(Dgv_marcas.CurrentRow.Cells["codigo_ma"].Value);
+                Txt_marca_pr.Text = Dgv_marcas.CurrentRow.Cells["descripcion_ma"].Value.ToString();
+
+            }
+        }
+
         #endregion
 
         private void Frm_Productos_Load(object sender, EventArgs e)
         {
             this.Listar_pr("%");
+            this.Listar_ma_pr("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
@@ -225,6 +264,18 @@ namespace Minimarket_Presentacion
         private void Btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_lupa1_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_ma.Location = Btn_lupa1.Location;
+            this.Pnl_Listado_ma.Visible = true;
+        }
+
+        private void Dgv_marcas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SeleccionarItem_ma_pr();
+            this.Pnl_Listado_ma.Visible = false;
         }
     }
 }
