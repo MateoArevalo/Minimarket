@@ -134,12 +134,51 @@ namespace Minimarket_Presentacion
             }
         }
 
+        private void Formato_um_pr()
+        {
+            Dgv_unidades_medida.Columns[0].Width = 230;
+            Dgv_unidades_medida.Columns[0].HeaderText = "MEDIDAS";
+            Dgv_unidades_medida.Columns[1].Visible = false;
+        }
+
+        private void Listar_um_pr(string cTexto)
+        {
+            try
+            {
+
+                DataTable datos = N_Productos.Lista_um_pr(cTexto);
+                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
+                Dgv_unidades_medida.DataSource = datos;
+                Console.WriteLine("Filas después del formato: " + Dgv_unidades_medida.Rows.Count);
+                this.Formato_um_pr();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void SeleccionarItem_um_pr()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_unidades_medida.CurrentRow.Cells["codigo_um"].Value)))
+            {
+                MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.codigoUm = Convert.ToInt32(Dgv_unidades_medida.CurrentRow.Cells["codigo_um"].Value);
+                Txt_medida_pr.Text = Dgv_unidades_medida.CurrentRow.Cells["descripcion_um"].Value.ToString();
+
+            }
+        }
+
         #endregion
 
         private void Frm_Productos_Load(object sender, EventArgs e)
         {
             this.Listar_pr("%");
             this.Listar_ma_pr("%");
+            this.Listar_um_pr("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
@@ -276,6 +315,38 @@ namespace Minimarket_Presentacion
         {
             this.SeleccionarItem_ma_pr();
             this.Pnl_Listado_ma.Visible = false;
+        }
+
+        private void Btn_lupa2_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_um.Location = Btn_lupa1.Location;
+            this.Pnl_Listado_um.Visible = true;
+        }
+
+        private void Btn_buscar1_Click(object sender, EventArgs e)
+        {
+            this.Listar_ma_pr(Txt_buscar1.Text);
+        }
+
+        private void Btn_buscar2_Click(object sender, EventArgs e)
+        {
+            this.Listar_um_pr(Txt_buscar2.Text);
+        }
+
+        private void Btn_retornar1_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_ma.Visible = false;
+        }
+
+        private void Btn_retornar2_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_um.Visible = false;
+        }
+
+        private void Dgv_unidades_medida_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SeleccionarItem_um_pr();
+            this.Pnl_Listado_um.Visible = false;
         }
     }
 }

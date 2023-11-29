@@ -63,6 +63,32 @@ namespace Minimarket_Datos
             }
         }
 
+        public DataTable Lista_um_pr(string cTexto)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection con = new SqlConnection();
+            try
+            {
+                con = Conexion.getInstance().CrearConexion();
+                SqlCommand cmd = new SqlCommand("USP_Listado_um_pr", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@cTexto", SqlDbType.VarChar).Value = cTexto;
+                con.Open();
+                resultado = cmd.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+        }
+
         public string Guardar_pr(int nOpcion, E_Productos oProductos)
         {
             string resp = "";

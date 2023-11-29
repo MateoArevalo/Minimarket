@@ -23,6 +23,12 @@ namespace Minimarket_Negocio
             return Datos.Lista_ma_pr(cTexto);
         }
 
+        public static DataTable Lista_um_pr(string cTexto)
+        {
+            D_Productos Datos = new D_Productos();
+            return Datos.Lista_um_pr(cTexto);
+        }
+
         public static string Guardar_pr(int nOpcion, E_Productos oProductos)
         {
             D_Productos Datos = new D_Productos();
