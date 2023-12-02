@@ -55,9 +55,7 @@ namespace Minimarket_Presentacion
             {
                 
                 DataTable datos = N_Productos.Lista_pr(cTexto);
-                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
-                Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
                 this.Formato_pr();
             }
             catch ( Exception ex )
@@ -109,9 +107,7 @@ namespace Minimarket_Presentacion
             {
 
                 DataTable datos = N_Productos.Lista_ma_pr(cTexto);
-                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_marcas.DataSource = datos;
-                Console.WriteLine("Filas después del formato: " + Dgv_marcas.Rows.Count);
                 this.Formato_ma_pr();
             }
             catch (Exception ex)
@@ -147,9 +143,7 @@ namespace Minimarket_Presentacion
             {
 
                 DataTable datos = N_Productos.Lista_um_pr(cTexto);
-                Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_unidades_medida.DataSource = datos;
-                Console.WriteLine("Filas después del formato: " + Dgv_unidades_medida.Rows.Count);
                 this.Formato_um_pr();
             }
             catch (Exception ex)
@@ -172,6 +166,42 @@ namespace Minimarket_Presentacion
             }
         }
 
+        private void Formato_ca_pr()
+        {
+            Dgv_categorias.Columns[0].Width = 230;
+            Dgv_categorias.Columns[0].HeaderText = "CATEGORIAS";
+            Dgv_categorias.Columns[1].Visible = false;
+        }
+
+        private void Listar_ca_pr(string cTexto)
+        {
+            try
+            {
+
+                DataTable datos = N_Productos.Lista_ca_pr(cTexto);
+                Dgv_categorias.DataSource = datos;
+                this.Formato_ca_pr();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void SeleccionarItem_ca_pr()
+        {
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_categorias.CurrentRow.Cells["codigo_ca"].Value)))
+            {
+                MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                this.codigoCa = Convert.ToInt32(Dgv_categorias.CurrentRow.Cells["codigo_ca"].Value);
+                Txt_categoria_pr.Text = Dgv_categorias.CurrentRow.Cells["descripcion_ca"].Value.ToString();
+
+            }
+        }
+
         #endregion
 
         private void Frm_Productos_Load(object sender, EventArgs e)
@@ -179,6 +209,7 @@ namespace Minimarket_Presentacion
             this.Listar_pr("%");
             this.Listar_ma_pr("%");
             this.Listar_um_pr("%");
+            this.Listar_ca_pr("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
@@ -219,7 +250,11 @@ namespace Minimarket_Presentacion
             this.EstadoBotonesPrincipales(false);
             this.EstadoBotonesProcesos(true);
             Txt_descripcion_pr.Text = string.Empty;
+            Txt_stockMin_pr.Text = "0";
+            Txt_stockMax_pr.Text = "0";
             Txt_descripcion_pr.ReadOnly = false;
+            Txt_stockMin_pr.ReadOnly = false;
+            Txt_stockMax_pr.ReadOnly = false;
             Tbp_Principal.SelectedIndex = 1;
             Txt_descripcion_pr.Focus();
         }
@@ -240,7 +275,11 @@ namespace Minimarket_Presentacion
             estadoGuarda = 0; //Sin ninguna accion
             this.codigoPr = 0;
             Txt_descripcion_pr.Text = string.Empty;
+            Txt_stockMax_pr.Text = "0";
+            Txt_stockMin_pr.Text = "0";
             Txt_descripcion_pr.ReadOnly = true;
+            Txt_stockMax_pr.ReadOnly = true;
+            Txt_stockMin_pr.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
@@ -315,6 +354,7 @@ namespace Minimarket_Presentacion
         {
             this.SeleccionarItem_ma_pr();
             this.Pnl_Listado_ma.Visible = false;
+            this.Txt_buscar1.Text = string.Empty;
         }
 
         private void Btn_lupa2_Click(object sender, EventArgs e)
@@ -347,6 +387,30 @@ namespace Minimarket_Presentacion
         {
             this.SeleccionarItem_um_pr();
             this.Pnl_Listado_um.Visible = false;
+            this.Txt_buscar2.Text = string.Empty;
+        }
+
+        private void Btn_buscar3_Click(object sender, EventArgs e)
+        {
+            this.Listar_ca_pr(Txt_buscar3.Text);
+        }
+
+        private void Btn_retornar3_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_ca.Visible = false;
+        }
+
+        private void Dgv_categorias_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SeleccionarItem_ca_pr();
+            this.Pnl_Listado_ca.Visible = false;
+            this.Txt_buscar3.Text = string.Empty;
+        }
+
+        private void Btn_lupa3_Click(object sender, EventArgs e)
+        {
+            this.Pnl_Listado_ca.Location = Btn_lupa1.Location;
+            this.Pnl_Listado_ca.Visible = true;
         }
     }
 }
