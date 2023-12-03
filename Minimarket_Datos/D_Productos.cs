@@ -115,6 +115,32 @@ namespace Minimarket_Datos
             }
         }
 
+        public DataTable Ver_Stock_actual_ProductoXAlmacenes(int nCodigo_pr)
+        {
+            SqlDataReader resultado;
+            DataTable tabla = new DataTable();
+            SqlConnection con = new SqlConnection();
+            try
+            {
+                con = Conexion.getInstance().CrearConexion();
+                SqlCommand cmd = new SqlCommand("USP_Ver_Stock_actual_ProductoXAlmacenes", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@nCodigo_pr", SqlDbType.Int).Value = nCodigo_pr;
+                con.Open();
+                resultado = cmd.ExecuteReader();
+                tabla.Load(resultado);
+                return tabla;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                if (con.State == ConnectionState.Open) con.Close();
+            }
+        }
+
         public string Guardar_pr(int nOpcion, E_Productos oProductos)
         {
             string resp = "";
@@ -133,7 +159,7 @@ namespace Minimarket_Datos
                 cmd.Parameters.Add("@nStock_min", SqlDbType.Int).Value = oProductos.Stock_min;
                 cmd.Parameters.Add("@nStock_max", SqlDbType.Int).Value = oProductos.Stock_max;
                 con.Open();
-                resp = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo registrar los datos";
+                resp = cmd.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo registrar los datos";
             }
             catch (Exception ex)
             {
