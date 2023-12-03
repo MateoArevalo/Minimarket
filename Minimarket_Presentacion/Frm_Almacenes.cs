@@ -12,39 +12,37 @@ using Minimarket_Negocio;
 
 namespace Minimarket_Presentacion
 {
-    public partial class Frm_Unidades_Medidas : Form
+    public partial class Frm_Almacenes : Form
     {
-        public Frm_Unidades_Medidas()
+        public Frm_Almacenes()
         {
             InitializeComponent();
         }
 
         #region "Mis variables"
         int estadoGuarda = 0; //Sin ninguna accion
-        int codigoUm = 0;
+        int codigoAl = 0;
         #endregion
 
         #region Mis Metodos
-        private void Formato_um()
+        private void Formato_al()
         {
             Dgv_principal.Columns[0].Width = 100;
             Dgv_principal.Columns[0].HeaderText = "CÓDIGO";
-            Dgv_principal.Columns[1].Width = 100;
-            Dgv_principal.Columns[1].HeaderText = "ABREVIATURA";
-            Dgv_principal.Columns[2].Width = 250;
-            Dgv_principal.Columns[2].HeaderText = "MEDIDA";
+            Dgv_principal.Columns[1].Width = 350;
+            Dgv_principal.Columns[1].HeaderText = "ALMACÉN";
         }
 
-        private void Listar_um(string cTexto)
+        private void Listar_al(string cTexto)
         {
             try
             {
                 
-                DataTable datos = N_Unidades_Medidas.Lista_um(cTexto);
+                DataTable datos = N_Almacenes.Lista_al(cTexto);
                 Console.WriteLine("Filas antes del formato: " + datos.Rows.Count);
                 Dgv_principal.DataSource = datos;
                 Console.WriteLine("Filas después del formato: " + Dgv_principal.Rows.Count);
-                this.Formato_um();
+                this.Formato_al();
             }
             catch ( Exception ex )
             {
@@ -70,52 +68,48 @@ namespace Minimarket_Presentacion
 
         private void SeleccionarItem()
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_um"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_al"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.codigoUm = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_um"].Value);
-                Txt_abreviatura_um.Text = Dgv_principal.CurrentRow.Cells["abreviatura_um"].Value.ToString();
-                Txt_descripcion_um.Text = Dgv_principal.CurrentRow.Cells["descripcion_um"].Value.ToString();
+                this.codigoAl = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
+                Txt_descripcion_al.Text = Dgv_principal.CurrentRow.Cells["descripcion_al"].Value.ToString();
             }
         }
 
         #endregion
 
-        private void Frm_Unidades_Medidas_Load(object sender, EventArgs e)
+        private void Frm_Almacenes_Load(object sender, EventArgs e)
         {
-            this.Listar_um("%");
+            this.Listar_al("%");
         }
 
         private void Btn_Guardar_Click(object sender, EventArgs e)
         {
-            if (Txt_abreviatura_um.Text == string.Empty || Txt_descripcion_um.Text == string.Empty)
+            if (Txt_descripcion_al.Text == string.Empty)
             {
                 MessageBox.Show("Falta ingresar datos requeridos (*)", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else //Procede a registrar la informacion
             {
-                E_Unidades_Medidas oUnidadesMedidas = new E_Unidades_Medidas();
+                E_Almacenes oAlmacenes = new E_Almacenes();
                 string respuesta = string.Empty;
-                oUnidadesMedidas.Codigo_um = this.codigoUm;
-                oUnidadesMedidas.Abreviatura_um = Txt_abreviatura_um.Text.Trim();
-                oUnidadesMedidas.Descripcion_um = Txt_descripcion_um.Text.Trim();
-                respuesta = N_Unidades_Medidas.Guardar_um(estadoGuarda, oUnidadesMedidas);
+                oAlmacenes.Codigo_al = this.codigoAl;
+                oAlmacenes.Descripcion_al = Txt_descripcion_al.Text.Trim();
+                respuesta = N_Almacenes.Guardar_al(estadoGuarda, oAlmacenes);
                 if (respuesta == "OK")
                 {
-                    this.Listar_um("%");
+                    this.Listar_al("%");
                     MessageBox.Show("Datos guardados correctamente", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     estadoGuarda = 0; //Finaliza su accion
                     this.EstadoBotonesPrincipales(true);
                     this.EstadoBotonesProcesos(false);
-                    Txt_abreviatura_um.Text = string.Empty;
-                    Txt_abreviatura_um.ReadOnly = true;
-                    Txt_descripcion_um.Text = string.Empty;
-                    Txt_descripcion_um.ReadOnly = true;
+                    Txt_descripcion_al.Text = string.Empty;
+                    Txt_descripcion_al.ReadOnly = true;
                     Tbp_Principal.SelectedIndex = 0;
-                    this.codigoUm = 0;
+                    this.codigoAl = 0;
                 }
                 else
                 {
@@ -129,12 +123,10 @@ namespace Minimarket_Presentacion
             estadoGuarda = 1; //Nuevo registro
             this.EstadoBotonesPrincipales(false);
             this.EstadoBotonesProcesos(true);
-            Txt_abreviatura_um.Text = string.Empty;
-            Txt_abreviatura_um.ReadOnly = false;
-            Txt_descripcion_um.Text = string.Empty;
-            Txt_descripcion_um.ReadOnly = false;
+            Txt_descripcion_al.Text = string.Empty;
+            Txt_descripcion_al.ReadOnly = false;
             Tbp_Principal.SelectedIndex = 1;
-            Txt_abreviatura_um.Focus();
+            Txt_descripcion_al.Focus();
         }
 
         private void Btn_actualizar_Click(object sender, EventArgs e)
@@ -143,20 +135,17 @@ namespace Minimarket_Presentacion
             this.EstadoBotonesPrincipales(false);
             this.EstadoBotonesProcesos(true);
             this.SeleccionarItem();
-            Txt_abreviatura_um.ReadOnly = false;
-            Txt_descripcion_um.ReadOnly = false;
+            Txt_descripcion_al.ReadOnly = false;
             Tbp_Principal.SelectedIndex = 1;
-            Txt_abreviatura_um.Focus();
+            Txt_descripcion_al.Focus();
         }
 
         private void Btn_Cancelar_Click(object sender, EventArgs e)
         {
             estadoGuarda = 0; //Sin ninguna accion
-            this.codigoUm = 0;
-            Txt_abreviatura_um.Text = string.Empty;
-            Txt_abreviatura_um.ReadOnly = false;
-            Txt_descripcion_um.Text = string.Empty;
-            Txt_descripcion_um.ReadOnly = true;
+            this.codigoAl = 0;
+            Txt_descripcion_al.Text = string.Empty;
+            Txt_descripcion_al.ReadOnly = true;
             this.EstadoBotonesPrincipales(true);
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
@@ -172,18 +161,16 @@ namespace Minimarket_Presentacion
         private void Btn_Retornar_Click(object sender, EventArgs e)
         {
             //estadoGuarda = 0;
-            Txt_abreviatura_um.Text = string.Empty;
-            Txt_abreviatura_um.ReadOnly = false;
-            Txt_descripcion_um.Text = string.Empty;
-            Txt_descripcion_um.ReadOnly = true;
+            Txt_descripcion_al.Text = string.Empty;
+            Txt_descripcion_al.ReadOnly = true;
             this.EstadoBotonesProcesos(false);
             Tbp_Principal.SelectedIndex = 0;
-            this.codigoUm = 0;
+            this.codigoAl = 0;
         }
 
         private void Btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_um"].Value)))
+            if (string.IsNullOrEmpty(Convert.ToString(Dgv_principal.CurrentRow.Cells["codigo_ca"].Value)))
             {
                 MessageBox.Show("No se tiene informacion para visualizar", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -194,12 +181,12 @@ namespace Minimarket_Presentacion
                 if (opcion == DialogResult.Yes)
                 {
                     string resp = String.Empty;
-                    this.codigoUm = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_um"].Value);
-                    resp = N_Unidades_Medidas.Eliminar_um(this.codigoUm);
+                    this.codigoAl = Convert.ToInt32(Dgv_principal.CurrentRow.Cells["codigo_al"].Value);
+                    resp = N_Almacenes.Eliminar_al(this.codigoAl);
                     if(resp.Equals("OK"))
                     {
-                        this.Listar_um("%");
-                        this.codigoUm = 0;
+                        this.Listar_al("%");
+                        this.codigoAl = 0;
                         MessageBox.Show("Registro eliminado", "Aviso del sistema", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -208,14 +195,14 @@ namespace Minimarket_Presentacion
 
         private void Btn_buscar_Click(object sender, EventArgs e)
         {
-            this.Listar_um(Txt_buscar.Text.Trim());
+            this.Listar_al(Txt_buscar.Text.Trim());
         }
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            Reportes.Frm_Rpt_Unidades_Medidas oRpt3 = new Reportes.Frm_Rpt_Unidades_Medidas();
-            oRpt3.txt_p1.Text = Txt_buscar.Text;
-            oRpt3.ShowDialog();
+            Reportes.Frm_Rpt_Almacenes oRpt4 = new Reportes.Frm_Rpt_Almacenes();
+            oRpt4.txt_p1.Text = Txt_buscar.Text;
+            oRpt4.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)
