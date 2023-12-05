@@ -384,9 +384,9 @@ namespace Minimarket_Presentacion
 
         private void Btn_reporte_Click(object sender, EventArgs e)
         {
-            //Reportes.Frm_Rpt_Productos oRpt5 = new Reportes.Frm_Rpt_Productos();
-            //oRpt5.txt_p1.Text = Txt_buscar.Text;
-            //oRpt5.ShowDialog();
+            Reportes.Frm_Rpt_Productos oRpt5 = new Reportes.Frm_Rpt_Productos();
+            oRpt5.txt_p1.Text = Txt_buscar.Text;
+            oRpt5.ShowDialog();
         }
 
         private void Btn_salir_Click(object sender, EventArgs e)

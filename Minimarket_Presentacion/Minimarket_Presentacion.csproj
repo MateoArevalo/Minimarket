@@ -119,6 +119,12 @@
     <Compile Include="Reportes\Frm_Rpt_Marcas.Designer.cs">
       <DependentUpon>Frm_Rpt_Marcas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\Frm_Rpt_Productos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Frm_Rpt_Productos.Designer.cs">
+      <DependentUpon>Frm_Rpt_Productos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Frm_Rpt_Unidades_Medidas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,12 +165,16 @@
     <EmbeddedResource Include="Reportes\Frm_Rpt_Marcas.resx">
       <DependentUpon>Frm_Rpt_Marcas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Frm_Rpt_Productos.resx">
+      <DependentUpon>Frm_Rpt_Productos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Frm_Rpt_Unidades_Medidas.resx">
       <DependentUpon>Frm_Rpt_Unidades_Medidas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Rpt_Almacenes.rdlc" />
     <EmbeddedResource Include="Reportes\Rpt_Categorias.rdlc" />
     <EmbeddedResource Include="Reportes\Rpt_Marcas.rdlc" />
+    <EmbeddedResource Include="Reportes\Rpt_Productos.rdlc" />
     <EmbeddedResource Include="Reportes\Rpt_Unidades_Medidas.rdlc" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
