@@ -50,7 +50,7 @@ namespace Minimarket_Datos
                 cmd.Parameters.Add("@nCodigo_al", SqlDbType.Int).Value = oAlmacenes.Codigo_al;
                 cmd.Parameters.Add("@cDescripcion_al", SqlDbType.VarChar).Value = oAlmacenes.Descripcion_al;
                 con.Open();
-                resp = cmd.ExecuteNonQuery() == 1 ? "OK" : "No se pudo registrar los datos";
+                resp = cmd.ExecuteNonQuery() >= 1 ? "OK" : "No se pudo registrar los datos";
             }
             catch (Exception ex)
             {

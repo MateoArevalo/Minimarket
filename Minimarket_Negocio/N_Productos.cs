@@ -35,6 +35,12 @@ namespace Minimarket_Negocio
             return Datos.Lista_ca_pr(cTexto);
         }
 
+        public static DataTable Ver_Stock_actual_ProductoXAlmacene(int nCodigo_pr)
+        {
+            D_Productos Datos = new D_Productos();
+            return Datos.Ver_Stock_actual_ProductoXAlmacenes(nCodigo_pr);
+        }
+
         public static string Guardar_pr(int nOpcion, E_Productos oProductos)
         {
             D_Productos Datos = new D_Productos();
